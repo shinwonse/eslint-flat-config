@@ -1,48 +1,91 @@
-export const JS_FILES = ["js", "mjs", "cjs"] as const;
-export const TS_FILES = ["ts", "mts", "cts"] as const;
-export const JSX_FILES = ["jsx", "mjsx", "cjsx"] as const;
-export const TSX_FILES = ["tsx", "mtsx", "ctsx"] as const;
-export const GQL_FILES = ["graphql", "gql"] as const;
-export const JSON_FILES = ["json"] as const;
-export const JSONC_FILES = ["jsonc"] as const;
-export const JSON5_FILES = ["json5"] as const;
+import type { FileExtensions, GlobPattern } from "./types";
 
-export const REACT_FILES = [...JSX_FILES, ...TSX_FILES] as const;
-export const SRC_FILES = [...JS_FILES, ...TS_FILES] as const;
-export const SRC_ALL_FILES = [...REACT_FILES, ...SRC_FILES] as const;
+/**
+ * File extension configurations for different file types
+ */
+export const FILE_EXTENSIONS: FileExtensions = {
+  js: ["js", "mjs", "cjs"],
+  ts: ["ts", "mts", "cts"],
+  jsx: ["jsx", "mjsx", "cjsx"],
+  tsx: ["tsx", "mtsx", "ctsx"],
+  gql: ["graphql", "gql"],
+  json: ["json", "jsonc", "json5"],
+} as const;
 
-export const GLOB_SRC = `**/*.{${SRC_FILES.join(",")}}`;
-export const GLOB_SRC_ALL = `**/*.{${SRC_ALL_FILES.join(",")}}` as const;
-
-export const GLOB_JS = `**/*.{${JS_FILES.join(",")}}` as const;
-export const GLOB_JSX = `**/*.{${JSX_FILES.join(",")}}` as const;
-
-export const GLOB_JSON = `**/*.{${JSON_FILES.join(",")}}` as const;
-export const GLOB_JSONC = `**/*.{${JSONC_FILES.join(",")}}` as const;
-export const GLOB_JSONC_TSCONFIG = `**/tsconfig.json`;
-export const GLOB_JSONC_VSCODE = `.vscode/*.json`;
-export const GLOB_JSON5 = `**/*.{${JSON5_FILES.join(",")}}` as const;
-
-export const GLOB_TS = `**/*.{${TS_FILES.join(",")}}` as const;
-export const GLOB_TSX = `**/*.{${TSX_FILES.join(",")}}` as const;
-
-export const GLOB_GQL = `**/*.{${GQL_FILES.join(",")}}` as const;
-
-export const GLOB_REACT = `**/*.{${REACT_FILES.join(",")}}` as const;
-
-export const GLOB_TEST = `**/*.{test,spec}.{${SRC_ALL_FILES.join(",")}}` as const;
-
-// Storybook
-export const GLOB_MAIN = `.storybook/main.{${SRC_FILES.join(",")}}` as const;
-export const GLOB_STORIES = `**/*.{stories,story}.{${SRC_ALL_FILES.join(",")}}` as const;
-
-// Node
-export const GLOB_NODE_MODULES = "**/node_modules";
-
-export const makeGlobSrcFiles = (glob: string) => {
-  return `${glob}.{${SRC_ALL_FILES.join(",")}}`;
+/**
+ * Combines multiple file extensions into a single array
+ */
+const combineExtensions = (...keys: Array<keyof FileExtensions>): readonly string[] => {
+  return keys.flatMap(key => FILE_EXTENSIONS[key]);
 };
 
-export const makeGlobJsFiles = (glob: string) => {
-  return `${glob}.{${JS_FILES.join(",")}}`;
+/**
+ * Creates a glob pattern for the given file extensions
+ */
+const createGlob = (extensions: readonly string[]): GlobPattern => {
+  return `**/*.{${extensions.join(",")}}`;
+};
+
+/**
+ * Creates a glob pattern for a specific path and extensions
+ */
+const createPathGlob = (path: string, extensions: readonly string[]): GlobPattern => {
+  return `${path}.{${extensions.join(",")}}`;
+};
+
+// Source file globs
+export const GLOB_SRC = createGlob(combineExtensions("js", "ts"));
+export const GLOB_REACT = createGlob(combineExtensions("jsx", "tsx"));
+export const GLOB_ALL = createGlob(combineExtensions("js", "ts", "jsx", "tsx"));
+
+// JavaScript specific globs
+export const GLOB_JS = createGlob(FILE_EXTENSIONS.js);
+export const GLOB_JSX = createGlob(FILE_EXTENSIONS.jsx);
+
+// TypeScript specific globs
+export const GLOB_TS = createGlob(FILE_EXTENSIONS.ts);
+export const GLOB_TSX = createGlob(FILE_EXTENSIONS.tsx);
+
+// GraphQL globs
+export const GLOB_GQL = createGlob(FILE_EXTENSIONS.gql);
+
+// JSON globs
+export const GLOB_JSON = createGlob(FILE_EXTENSIONS.json);
+
+// Special configuration files
+export const GLOB_TSCONFIG = "**/tsconfig.json";
+export const GLOB_VSCODE = ".vscode/*.json";
+
+// Test files
+export const GLOB_TEST = createPathGlob("**/*", ["test", "spec"]);
+export const GLOB_TEST_SRC = createGlob(
+  combineExtensions("js", "ts", "jsx", "tsx")
+    .map(ext => `test.${ext}`)
+    .concat(combineExtensions("js", "ts", "jsx", "tsx").map(ext => `spec.${ext}`))
+);
+
+// Storybook files
+export const GLOB_STORYBOOK_MAIN = createPathGlob(".storybook/main", combineExtensions("js", "ts"));
+export const GLOB_STORIES = createPathGlob("**/*", ["stories", "story"]);
+export const GLOB_STORIES_SRC = createGlob(
+  combineExtensions("js", "ts", "jsx", "tsx")
+    .map(ext => `stories.${ext}`)
+    .concat(combineExtensions("js", "ts", "jsx", "tsx").map(ext => `story.${ext}`))
+);
+
+// Node specific globs
+export const GLOB_NODE_MODULES = "**/node_modules";
+
+/**
+ * Creates a glob pattern for source files with a specific base path
+ */
+export const makeGlobSrcFiles = (basePath: string): GlobPattern => {
+  return createPathGlob(basePath, combineExtensions("js", "ts", "jsx", "tsx"));
+};
+
+/**
+ * Creates a glob pattern for JavaScript files with a specific base path
+ */
+export const makeGlobJsFiles = (basePath: string): GlobPattern => {
+  return createPathGlob(basePath, FILE_EXTENSIONS.js);
 };

@@ -1,114 +1,51 @@
-import type { Linter } from "eslint";
-import sonarjs from "eslint-plugin-sonarjs";
-import unicorn from "./rules/unicorn.js";
-import eslint from "./rules/eslint.js";
-import { GLOB_SRC } from "@wonse/eslint-common";
-import comments from "@eslint-community/eslint-plugin-eslint-comments";
-import gitignore from "eslint-config-flat-gitignore";
-import globals from "globals";
-import json from "./json.js";
+/**
+ * @wonse/eslint-js
+ * ESLint configuration for JavaScript projects with modern best practices.
+ * 
+ * Features:
+ * - Core JavaScript rules for error prevention and best practices
+ * - Modern JavaScript features and patterns
+ * - Unicorn plugin for additional best practices
+ * - JSON file support
+ */
 
-export * from "@wonse/eslint-common";
-export { json } from "./json.js";
+import type { ESLint, Linter } from "eslint";
+import { GLOB_JS, GLOB_JSON } from "@wonse/eslint-common";
+
+import { coreRules } from "./rules/core-rules";
+import { unicornRules } from "./rules/unicorn-rules";
+import { jsonRules } from "./rules/json-rules";
+
+import unicorn from "eslint-plugin-unicorn";
+import json from "@eslint/json";
 
 /**
- * The ECMAScript version of the code being linted.
+ * Default JavaScript ESLint configuration
  */
-type EcmaVersion =
-  | 3
-  | 5
-  | 6
-  | 7
-  | 8
-  | 9
-  | 10
-  | 11
-  | 12
-  | 13
-  | 14
-  | 15
-  | 16
-  | 2015
-  | 2016
-  | 2017
-  | 2018
-  | 2019
-  | 2020
-  | 2021
-  | 2022
-  | 2023
-  | 2024
-  | 2025
-  | "latest";
-
-/**
- * The type of JavaScript source code.
- */
-type SourceType = "script" | "module" | "commonjs";
-
-type JavascriptOptions = {
-  globals: Record<string, "readonly" | "writable" | "off">;
-  ecmaVersion: EcmaVersion;
-  sourceType: SourceType;
-  files: string[];
-};
-
-export function javascript({
-  ecmaVersion = 2022,
-  sourceType = "module",
-  files = [GLOB_SRC],
-  ...opts
-}: Partial<JavascriptOptions> = {}): Array<Linter.Config> {
-  const rules: Array<Linter.Config> = [
-    gitignore({
-      name: "wonse/gitignore/ignores",
-    }),
+export function javascript(): Array<Linter.Config> {
+  return [
     {
-      name: "wonse/javascript/files",
-      languageOptions: {
-        sourceType: "commonjs",
-      },
-      files: ["eslint.config.js"],
-    },
-    {
-      name: "wonse/javascript/setup",
-      languageOptions: {
-        ecmaVersion,
-        globals: {
-          ...globals.browser,
-          ...globals.es2021,
-          ...globals.node,
-          document: "readonly",
-          navigator: "readonly",
-          window: "readonly",
-          ...opts.globals,
-        },
-        sourceType,
-      },
-    },
-    {
-      name: "wonse/javascript/rules",
-      files,
+      // Core JavaScript rules
+      name: "wonse/javascript/core",
+      files: [GLOB_JS],
       plugins: {
-        ...eslint.plugins,
-        ...unicorn.plugins,
-        sonarjs, // https://github.com/SonarSource/SonarJS/blob/master/packages/jsts/src/rules/README.md#rules
-        "@eslint-community/eslint-comments": comments,
+        unicorn: unicorn as unknown as ESLint.Plugin,
       },
       rules: {
-        ...eslint.rules,
-        ...unicorn.rules,
-        ...sonarjs.configs.recommended.rules,
-        "sonarjs/no-clear-text-protocols": ["off"],
-        "sonarjs/no-useless-intersection": ["off"],
-        ...comments.configs.recommended.rules,
+        ...coreRules,
+        ...unicornRules,
       },
     },
+    {
+      // JSON file rules
+      name: "wonse/javascript/json",
+      files: [GLOB_JSON],
+      plugins: {
+        json: json as unknown as ESLint.Plugin,
+      },
+      rules: jsonRules,
+    },
   ];
-
-  return rules;
 }
 
-export default function (...params: Parameters<typeof javascript>): Array<Linter.Config> {
-  return [...javascript(...params), ...json()];
-}
+export default javascript;

@@ -1,11 +1,5 @@
 import plugin, { type JSONLanguageOptions } from "@eslint/json";
-import {
-  GLOB_JSONC_VSCODE,
-  GLOB_JSON,
-  GLOB_JSON5,
-  GLOB_JSONC,
-  GLOB_JSONC_TSCONFIG,
-} from "@wonse/eslint-common";
+import { GLOB_JSON, GLOB_VSCODE, GLOB_TSCONFIG } from "@wonse/eslint-common";
 import type { Linter } from "eslint";
 
 type JSONOptions = {
@@ -17,8 +11,8 @@ type JSONOptions = {
 
 export function json({
   jsonFiles = [GLOB_JSON],
-  jsoncFiles = [GLOB_JSONC, GLOB_JSONC_TSCONFIG, GLOB_JSONC_VSCODE],
-  json5Files = [GLOB_JSON5],
+  jsoncFiles = [GLOB_TSCONFIG, GLOB_VSCODE],
+  json5Files = [`**/*.json5`],
   jsoncLanguageOptions = {},
 }: Partial<JSONOptions> = {}): Array<Linter.Config> {
   const rules: Array<Linter.Config> = [

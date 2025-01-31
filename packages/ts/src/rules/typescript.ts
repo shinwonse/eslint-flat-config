@@ -1,115 +1,60 @@
+/**
+ * Main TypeScript ESLint configuration.
+ * This configuration provides a comprehensive set of rules for TypeScript projects,
+ * organized into three main categories:
+ * 
+ * 1. Type Rules: Enforce proper type system usage and type safety
+ * 2. Safety Rules: Prevent runtime errors and type-related bugs
+ * 3. Best Practices: Enforce modern TypeScript patterns and coding standards
+ * 
+ * The rules are designed to:
+ * - Maximize type safety and prevent runtime errors
+ * - Enforce consistent code style and patterns
+ * - Encourage usage of modern TypeScript features
+ * - Maintain code quality and readability
+ * 
+ * @see {@link typeRules} for type system related rules
+ * @see {@link safetyRules} for runtime safety rules
+ * @see {@link bestPracticesRules} for coding standards and best practices
+ */
+
 import type { ESLint, Linter } from "eslint";
 import plugin from "@typescript-eslint/eslint-plugin";
 import parser from "@typescript-eslint/parser";
 import type { Feature } from "@wonse/eslint-common";
+import { typeRules } from "./type-rules";
+import { safetyRules } from "./safety-rules";
+import { bestPracticesRules } from "./best-practices-rules";
 
+/**
+ * Combined set of all TypeScript ESLint rules.
+ * Merges rules from all categories while maintaining their individual configurations.
+ */
 export const rules: Linter.RulesRecord = {
-  "@typescript-eslint/consistent-type-exports": [
-    // https://typescript-eslint.io/rules/consistent-type-exports/
-    "error",
-    { fixMixedExportsWithInlineTypeSpecifier: true },
-  ],
-  "@typescript-eslint/consistent-type-imports": [
-    // https://typescript-eslint.io/rules/consistent-type-imports/
-    // requires 'emitDecoratorMetadata' in tsconfig to be **true**
-    "error",
-    { fixStyle: "inline-type-imports" },
-  ],
-  "@typescript-eslint/no-unused-vars": [
-    "error",
-    {
-      args: "all",
-      argsIgnorePattern: "^_",
-      caughtErrors: "all",
-      caughtErrorsIgnorePattern: "^_",
-      destructuredArrayIgnorePattern: "^_",
-      varsIgnorePattern: "^_",
-      ignoreRestSiblings: true,
-    },
-  ],
-  // "@typescript-eslint/explicit-function-return-type": [
-  //   // https://typescript-eslint.io/rules/explicit-function-return-type/
-  //   "error",
-  //   { allowIIFEs: true },
-  // ],
-  "@typescript-eslint/explicit-module-boundary-types": [
-    // https://typescript-eslint.io/rules/explicit-module-boundary-types/
-    "error",
-  ],
-  "@typescript-eslint/method-signature-style": [
-    // https://typescript-eslint.io/rules/method-signature-style/
-    "error",
-  ],
-  "@typescript-eslint/no-import-type-side-effects": [
-    // https://typescript-eslint.io/rules/no-import-type-side-effects/
-    "error",
-  ],
-  "@typescript-eslint/no-useless-empty-export": [
-    // https://typescript-eslint.io/rules/no-useless-empty-export/
-    "error",
-  ],
-  "@typescript-eslint/promise-function-async": [
-    // https://typescript-eslint.io/rules/promise-function-async/
-    "error",
-  ],
-  "@typescript-eslint/require-array-sort-compare": [
-    // https://typescript-eslint.io/rules/require-array-sort-compare/
-    "error",
-  ],
-  "@typescript-eslint/no-unsafe-call": [
-    // https://typescript-eslint.io/rules/no-unsafe-call/
-    // should not be forced by default, turn on when you really need it
-    "off",
-  ],
-  "@typescript-eslint/no-explicit-any": [
-    // https://typescript-eslint.io/rules/no-explicit-any/
-    // should not be forced by default, turn on when you really need it
-    "off",
-  ],
-  "@typescript-eslint/no-unsafe-return": [
-    // https://typescript-eslint.io/rules/no-unsafe-return/
-    // should not be forced by default, turn on when you really need it
-    "off",
-  ],
-  "@typescript-eslint/no-unsafe-assignment": [
-    // https://typescript-eslint.io/rules/no-unsafe-assignment/
-    // should not be forced by default, turn on when you really need it
-    "off",
-  ],
-  "@typescript-eslint/no-unsafe-member-access": [
-    // https://typescript-eslint.io/rules/no-unsafe-member-access/
-    // should not be forced by default, turn on when you really need it
-    "off",
-  ],
-  "@typescript-eslint/no-unsafe-argument": [
-    // https://typescript-eslint.io/rules/no-unsafe-argument/
-    // should not be forced by default, turn on when you really need it
-    "off",
-  ],
-  "@typescript-eslint/no-empty-object-type": [
-    // https://typescript-eslint.io/rules/no-empty-object-type/
-    // should not be forced by default, turn on when you really need it
-    "off",
-  ],
-  "@typescript-eslint/no-unnecessary-type-parameters": [
-    // should not be forced by default, turn on when you really need it
-    "off",
-  ],
+  ...typeRules,
+  ...safetyRules,
+  ...bestPracticesRules,
 };
 
+/**
+ * Complete TypeScript ESLint configuration feature.
+ * Extends the strict type-checked configuration from @typescript-eslint
+ * and combines it with our custom rule sets.
+ * 
+ * Key features:
+ * - Uses @typescript-eslint parser for accurate TypeScript parsing
+ * - Extends strict type-checking rules as a baseline
+ * - Disables redundant base ESLint rules in favor of TypeScript-aware versions
+ */
 export default <Feature>{
   plugins: {
     "@typescript-eslint": plugin as unknown as ESLint.Plugin,
   },
   parser,
-  // more about @typescript-eslint/eslint-plugin rules see:
-  // - https://typescript-eslint.io/linting/configs#recommended-configurations
-  // - https://github.com/typescript-eslint/typescript-eslint/blob/main/packages/eslint-plugin/src/configs/strict.ts
   rules: {
     ...(plugin.configs["strict-type-checked"]!.rules as Linter.RulesRecord),
     ...rules,
-    // disabling default eslint rule and using @typescript-eslint/no-unused-vars instead
-    // to avoid unnecessary errors for type definitions
+    // Disable base rules in favor of TypeScript-specific ones
     "no-unused-vars": ["off"],
     "no-dupe-class-members": ["off"],
   },
