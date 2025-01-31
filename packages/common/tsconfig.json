@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "display": "@wonse/eslint-common",
+  "extends": "@wonse/tsconfig/tsconfig-node.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "sourceMap": false,
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "allowJs": true,
+    "noImplicitAny": false,
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist"]
+}

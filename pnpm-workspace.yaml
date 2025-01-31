@@ -1,0 +1,13 @@
+packages:
+  - "packages/*"
+
+catalog:
+  "eslint": "^9.19.0"
+  "tsup": "^8.3.6"
+  "typescript": ^5.7.3
+  "@swc/core": "1.10.4"
+  "@types/eslint": "^9.6.1"
+  "@types/eslint__js": "^8.42.3"
+  "@types/node": "^22.12.0"
+  "@wonse/tsconfig": "^1.1.0"
+  "eslint-plugin-react-refresh": ^0.4.18

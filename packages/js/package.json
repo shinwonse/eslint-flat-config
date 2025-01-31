@@ -1,0 +1,47 @@
+{
+  "name": "@wonse/eslint-js",
+  "version": "1.0.1",
+  "description": "Shared ESLint config for javascript projects",
+  "files": [
+    "dist"
+  ],
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "peerDependencies": {
+    "eslint": ">=9.2.0"
+  },
+  "dependencies": {
+    "@eslint-community/eslint-plugin-eslint-comments": "^4.4.1",
+    "@eslint/js": "^9.19.0",
+    "@eslint/json": "^0.10.0",
+    "@wonse/eslint-common": "workspace:*",
+    "eslint-config-flat-gitignore": "^1.0.0",
+    "eslint-plugin-sonarjs": "^3.0.1",
+    "eslint-plugin-unicorn": "^56.0.1",
+    "globals": "^15.14.0"
+  },
+  "devDependencies": {
+    "@types/eslint": "catalog:",
+    "@types/eslint__js": "catalog:",
+    "@wonse/tsconfig": "catalog:",
+    "eslint": "catalog:",
+    "tsup": "catalog:",
+    "typescript": "catalog:"
+  },
+  "scripts": {
+    "build": "tsup-node --minify",
+    "dev": "tsup-node --watch"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

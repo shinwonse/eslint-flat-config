@@ -1,0 +1,42 @@
+{
+  "name": "@wonse/eslint-ts",
+  "version": "1.0.1",
+  "publishConfig": {
+    "access": "public"
+  },
+  "description": "Shared ESLint config for typescript projects",
+  "files": [
+    "dist"
+  ],
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "peerDependencies": {
+    "eslint": ">=9.2.0"
+  },
+  "dependencies": {
+    "@wonse/eslint-js": "workspace:*",
+    "@typescript-eslint/eslint-plugin": "^8.22.0",
+    "@typescript-eslint/parser": "^8.22.0"
+  },
+  "devDependencies": {
+    "@types/eslint": "catalog:",
+    "@types/eslint__js": "catalog:",
+    "@wonse/tsconfig": "catalog:",
+    "eslint": "catalog:",
+    "tsup": "catalog:",
+    "typescript": "catalog:"
+  },
+  "scripts": {
+    "build": "tsup-node --minify",
+    "dev": "tsup-node --watch"
+  }
+}
