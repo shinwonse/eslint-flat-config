@@ -43,12 +43,12 @@
     "globals": "^15.14.0"
   },
   "devDependencies": {
-    "@types/eslint": "catalog:",
-    "@types/eslint__js": "catalog:",
-    "@wonse/tsconfig": "catalog:",
-    "eslint": "catalog:",
-    "tsup": "catalog:",
-    "typescript": "catalog:"
+    "@types/eslint": "^8.56.5",
+    "@types/eslint__js": "^8.42.3",
+    "@wonse/tsconfig": "^1.0.0",
+    "eslint": "^9.2.0",
+    "tsup": "^8.0.2",
+    "typescript": "^5.3.3"
   },
   "scripts": {
     "build": "tsup-node --minify",
