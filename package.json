@@ -27,7 +27,8 @@
     "clean": "turbo clean",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "changeset": "changeset",
-    "test": "eslint \"test/fixtures/**/*.{js,ts}\" --config test/eslint.config.js"
+    "test": "eslint \"test/fixtures/**/*.{js,ts}\" --config test/eslint.config.js",
+    "release": "changeset publish"
   },
   "peerDependencies": {
     "eslint": ">=9.2.0"
