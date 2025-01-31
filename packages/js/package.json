@@ -1,6 +1,6 @@
 {
   "name": "@wonse/eslint-js",
-  "version": "1.0.1",
+  "version": "2.0.0",
   "description": "Shared ESLint config for javascript projects",
   "files": [
     "dist"
