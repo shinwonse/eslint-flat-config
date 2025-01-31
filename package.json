@@ -3,6 +3,19 @@
   "private": true,
   "version": "1.0.0",
   "description": "Shared ESLint configs for modern projects",
+  "author": {
+    "name": "Wonse Shin",
+    "email": "sinwonse@gmail.com",
+    "url": "https://github.com/shinwonse"
+  },
+  "homepage": "https://github.com/shinwonse/eslint-flat-config",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/shinwonse/eslint-flat-config.git"
+  },
+  "bugs": {
+    "url": "https://github.com/shinwonse/eslint-flat-config/issues"
+  },
   "files": [
     "dist"
   ],
