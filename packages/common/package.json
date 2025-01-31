@@ -18,13 +18,6 @@
   "bugs": {
     "url": "https://github.com/shinwonse/eslint-flat-config/issues"
   },
-  "keywords": [
-    "eslint-config",
-    "eslint-flat-config",
-    "eslint",
-    "flat config",
-    "javascript"
-  ],
   "files": [
     "dist"
   ],
