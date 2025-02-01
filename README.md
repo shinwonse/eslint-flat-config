@@ -1,75 +1,56 @@
-# ESLint Flat Config
+# @wonse/eslint-config
 
-Modern ESLint configurations for JavaScript and TypeScript projects. This monorepo contains a collection of shareable ESLint configurations designed to enforce best practices and maintain code quality.
+🎯 A collection of modern ESLint flat config presets for various JavaScript/TypeScript environments.
 
 ## 📦 Packages
 
-This monorepo consists of the following packages:
+This monorepo contains the following packages:
 
-### [@wonse/eslint-common](./packages/common)
-
-Common utilities and types shared across ESLint configurations.
-- File glob patterns
-- Type definitions
-- Shared utilities
-
-### [@wonse/eslint-js](./packages/js)
-
-JavaScript ESLint configuration with modern best practices.
-- Core JavaScript rules
-- Unicorn plugin integration
-- JSON file support
-- Zero config setup
-
-### [@wonse/eslint-ts](./packages/ts)
-
-TypeScript ESLint configuration with strict type checking.
-- Strong type safety
-- Modern TypeScript patterns
-- Best practices enforcement
-- Extensible configuration
+- 🔧 [@wonse/eslint-config-common](./packages/common) - Common ESLint rules shared across all presets
+- ⚡️ [@wonse/eslint-config-js](./packages/js) - ESLint preset for JavaScript projects
+- 🚀 [@wonse/eslint-config-next](./packages/next) - ESLint preset for Next.js projects
 
 ## 🚀 Quick Start
 
-1. Install the desired configuration:
+Choose the appropriate preset for your project:
 
 ```bash
 # For JavaScript projects
-pnpm add -D @wonse/eslint-js
+npm install -D @wonse/eslint-config-js
 
-# For TypeScript projects
-pnpm add -D @wonse/eslint-ts
+# For Next.js projects
+npm install -D @wonse/eslint-config-next
 ```
 
-2. Create `eslint.config.js` in your project root:
+## 📝 Usage Example
 
 ```javascript
-// For JavaScript projects
-import javascript from '@wonse/eslint-js';
+// eslint.config.js
+import js from "@wonse/eslint-config-js";
+// or
+import next from "@wonse/eslint-config-next";
 
-export default [
-  ...javascript(),
-];
-
-// For TypeScript projects
-import typescript from '@wonse/eslint-ts';
-
-export default [
-  ...typescript(),
-];
+export default js(); // or next();
 ```
 
-## ✨ Features
+## 🏗 Project Structure
 
-- 🔄 Modern ESLint flat config support
-- 📝 Comprehensive documentation
-- ⚡️ Zero config defaults
-- 🛠 Highly customizable
-- 🔒 Type-safe configurations
+```
+packages/
+├── common/     # Common ESLint rules
+├── js/         # JavaScript preset
+└── next/       # Next.js preset
+```
 
-## 🔧 Development
+## 💻 Development
 
-This project uses pnpm workspaces. To get started:
+This project uses:
+
+- 📦 pnpm for package management
+- 🏃 Turborepo for build system
+- 📘 TypeScript for development
+
+### 🛠 Setup
 
 ```bash
 # Install dependencies
@@ -80,27 +61,20 @@ pnpm build
 
 # Run tests
 pnpm test
-
-# Lint code
-pnpm lint
 ```
-
-## 📖 Documentation
-
-Each package contains its own detailed documentation:
-
-- [Common Package Documentation](./packages/common/README.md)
-- [JavaScript Package Documentation](./packages/js/README.md)
-- [TypeScript Package Documentation](./packages/ts/README.md)
 
 ## 🤝 Contributing
 
-Contributions are welcome! Please read our [Contributing Guide](./CONTRIBUTING.md) for details on our code of conduct and the process for submitting pull requests.
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
 ## 📄 License
 
 MIT
 
-## ��‍💻 Author
+## 👤 Author
 
-wonse 
+wonse

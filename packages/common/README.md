@@ -1,121 +1,47 @@
-# @wonse/eslint-common
+# @wonse/eslint-config-common
 
-Common utilities and types for ESLint configurations. This package provides the foundation for other ESLint configuration packages in the monorepo.
+🎯 Common ESLint flat config preset shared across all @wonse/eslint-config packages.
 
-## Features
+## ✨ Features
 
-- 🏷 **Type Definitions**: Comprehensive TypeScript types for ESLint configurations
-- 🔍 **File Patterns**: Preconfigured glob patterns for different file types
-- 🛠 **Utilities**: Helper functions for creating custom glob patterns
-- 📦 **Zero Dependencies**: Only ESLint peer dependency
+- 📚 Basic ESLint rules and configurations
+- 🔧 Customizable and extensible settings
+- 🎨 Consistent code style conventions
+- ✅ Best practices for all JavaScript/TypeScript projects
 
-## Installation
+## 📦 Installation
 
 ```bash
 # Using npm
-npm install --save-dev @wonse/eslint-common
+npm install --save-dev @wonse/eslint-config-common
 
 # Using yarn
-yarn add --dev @wonse/eslint-common
+yarn add --dev @wonse/eslint-config-common
 
 # Using pnpm
-pnpm add -D @wonse/eslint-common
+pnpm add -D @wonse/eslint-config-common
 ```
 
-## Usage
+## 🚀 Usage
 
-### Types
+This package is typically used as a dependency in other @wonse/eslint-config packages.
+However, you can use it directly:
 
-```typescript
-import type { Feature, RuleConfig } from '@wonse/eslint-common';
+```javascript
+// eslint.config.js
+import common from "@wonse/eslint-config-common";
 
-// Define an ESLint feature
-const myFeature: Feature = {
-  plugins: {
-    'my-plugin': myPlugin,
-  },
-  rules: {
-    'my-rule': ['error', { option: true }],
-  },
-};
-
-// Type-safe rule configuration
-const myRule: RuleConfig<[{ option: boolean }]> = ['error', { option: true }];
+export default common();
 ```
 
-### Glob Patterns
-
-```typescript
-import {
-  GLOB_TS,
-  GLOB_TSX,
-  GLOB_TEST,
-  makeGlobSrcFiles,
-} from '@wonse/eslint-common';
-
-// Use predefined globs
-const tsConfig = {
-  files: [GLOB_TS, GLOB_TSX],
-  excludes: [GLOB_TEST],
-};
-
-// Create custom globs
-const customGlob = makeGlobSrcFiles('src/features');
-```
-
-## Available Patterns
-
-### Source Files
-- `GLOB_SRC`: All JavaScript and TypeScript files
-- `GLOB_REACT`: All React files (JSX/TSX)
-- `GLOB_ALL`: All source files
-
-### Language Specific
-- `GLOB_JS`: JavaScript files
-- `GLOB_JSX`: React JavaScript files
-- `GLOB_TS`: TypeScript files
-- `GLOB_TSX`: React TypeScript files
-- `GLOB_GQL`: GraphQL files
-
-### Test Files
-- `GLOB_TEST`: Test file patterns
-- `GLOB_TEST_SRC`: Test source files
-
-### Configuration Files
-- `GLOB_TSCONFIG`: TypeScript configuration
-- `GLOB_VSCODE`: VSCode settings
-
-### Storybook
-- `GLOB_STORYBOOK_MAIN`: Storybook main configuration
-- `GLOB_STORIES`: Story patterns
-- `GLOB_STORIES_SRC`: Story source files
-
-## Utility Functions
-
-### makeGlobSrcFiles
-Creates a glob pattern for source files with a specific base path.
-
-```typescript
-const componentGlob = makeGlobSrcFiles('src/components');
-// Result: "src/components.{js,ts,jsx,tsx}"
-```
-
-### makeGlobJsFiles
-Creates a glob pattern for JavaScript files with a specific base path.
-
-```typescript
-const jsGlob = makeGlobJsFiles('src/utils');
-// Result: "src/utils.{js,mjs,cjs}"
-```
-
-## Contributing
+## 🤝 Contributing
 
 Contributions are welcome! Please read our contributing guidelines for details.
 
-## License
+## 📄 License
 
 MIT
 
-## Author
+## 👤 Author
 
-wonse 
+wonse

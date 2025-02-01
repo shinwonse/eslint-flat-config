@@ -14,6 +14,9 @@ importers:
       '@types/node':
         specifier: ^20.11.30
         version: 20.17.16
+      '@wonse/tsconfig':
+        specifier: ^2.0.1
+        version: 2.0.1
       eslint:
         specifier: ^9.19.0
         version: 9.19.0
@@ -23,6 +26,9 @@ importers:
       prettier:
         specifier: ^3.2.5
         version: 3.4.2
+      tsup:
+        specifier: ^8.0.2
+        version: 8.3.6(typescript@5.7.3)
       turbo:
         specifier: ^2.3.4
         version: 2.3.4
@@ -1251,6 +1257,9 @@ packages:
 
   '@wonse/tsconfig@1.1.0':
     resolution: {integrity: sha512-dXb6SpHhrOR6ieH8qktfIXCnoW9fuRi0vc263ODn535oqCRe+wB/XWgCk6B3plpy0uSiH3QY+KbQoQ/fM7sqSw==}
+
+  '@wonse/tsconfig@2.0.1':
+    resolution: {integrity: sha512-1yb716RxpD6ZDE+I8n9IlstByw+pQI/QyAXJ+3G3b2oLRwmhWeSvTxpHsHPRBVIEQd/OzGK03kHrcwFzZwlyIA==}
 
   acorn-jsx@5.3.2:
     resolution: {integrity: sha512-rq9s+JNhf0IChjtDXxllJ7g41oZk5SlXtp0LHwyA5cejwn7vKmKp4pPri6YEePv2PU65sAsegbXtIinmDFDXgQ==}
@@ -4081,6 +4090,8 @@ snapshots:
       eslint-visitor-keys: 4.2.0
 
   '@wonse/tsconfig@1.1.0': {}
+
+  '@wonse/tsconfig@2.0.1': {}
 
   acorn-jsx@5.3.2(acorn@8.14.0):
     dependencies:

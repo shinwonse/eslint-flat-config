@@ -1,43 +1,43 @@
-# @wonse/eslint-config-next
+# @wonse/eslint-config-remix
 
-⚡️ ESLint flat config preset optimized for Next.js projects.
+🎸 ESLint flat config preset optimized for Remix projects.
 
 ## ✨ Features
 
-- 🎯 Next.js-specific ESLint rules
+- 🎯 Remix-specific ESLint rules
 - ⚛️ React best practices and patterns
 - 📘 Built-in TypeScript support
-- 🔄 Automatic import sorting
+- 🔄 Loader/Action conventions
 - 🎨 Consistent code styling
 
 ## 📦 Installation
 
 ```bash
 # Using npm
-npm install --save-dev @wonse/eslint-config-next
+npm install --save-dev @wonse/eslint-config-remix
 
 # Using yarn
-yarn add --dev @wonse/eslint-config-next
+yarn add --dev @wonse/eslint-config-remix
 
 # Using pnpm
-pnpm add -D @wonse/eslint-config-next
+pnpm add -D @wonse/eslint-config-remix
 ```
 
 ## 🚀 Usage
 
 ```javascript
 // eslint.config.js
-import next from "@wonse/eslint-config-next";
+import remix from "@wonse/eslint-config-remix";
 
-export default next();
+export default remix();
 ```
 
 ## 🛠 Configuration
 
 The preset includes optimized settings for:
 
-- 📱 Server and Client Components
-- 🔄 App Router
+- 📱 Server/Client Code Separation
+- 🔄 Route Conventions
 - 📝 TypeScript/JSX
 - 🎨 Style and Format
 
