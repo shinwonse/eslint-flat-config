@@ -1,37 +1,56 @@
 {
-  "name": "@wonse/eslint-config-remix",
-  "version": "0.0.0",
-  "description": "ESLint flat config preset for Remix projects",
-  "author": "wonse",
+  "name": "@wonse/eslint-remix",
+  "version": "2.0.0",
+  "description": "ESLint configuration for Remix projects with modern best practices",
+  "author": {
+    "name": "Wonse Shin",
+    "email": "sinwonse@gmail.com",
+    "url": "https://github.com/shinwonse"
+  },
+  "homepage": "https://github.com/shinwonse/eslint-flat-config",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/shinwonse/eslint-flat-config.git",
+    "directory": "packages/remix"
+  },
+  "bugs": {
+    "url": "https://github.com/shinwonse/eslint-flat-config/issues"
+  },
   "license": "MIT",
-  "keywords": [
-    "eslint",
-    "eslintconfig",
-    "remix",
-    "react"
-  ],
-  "main": "dist/index.js",
-  "module": "dist/index.mjs",
-  "types": "dist/index.d.ts",
   "files": [
     "dist"
   ],
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "types": "./dist/index.d.ts",
   "scripts": {
-    "build": "tsup",
-    "dev": "tsup --watch",
-    "clean": "rimraf dist"
+    "build": "tsup-node --minify",
+    "dev": "tsup-node --watch",
+    "clean": "rimraf .turbo node_modules dist"
   },
   "peerDependencies": {
-    "eslint": "^8.0.0"
+    "eslint": ">=9.0.0",
+    "typescript": ">=5.0.0"
   },
   "dependencies": {
-    "@wonse/eslint-config-common": "workspace:*",
-    "@remix-run/eslint-config": "^2.0.0",
-    "eslint-plugin-react": "^7.33.2",
-    "eslint-plugin-react-hooks": "^4.6.0"
+    "@wonse/eslint-common": "workspace:*",
+    "@wonse/eslint-ts": "workspace:*",
+    "@wonse/eslint-react": "workspace:*",
+    "eslint-plugin-remix": "^1.1.1"
   },
   "devDependencies": {
-    "tsup": "^8.0.0",
-    "typescript": "^5.0.0"
+    "@types/eslint": "^8.56.5",
+    "eslint": "^9.19.0",
+    "rimraf": "^5.0.5",
+    "tsup": "^8.0.2",
+    "typescript": "^5.3.3"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

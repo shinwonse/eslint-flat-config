@@ -1,27 +1,10 @@
-import { join } from "path";
-import { FlatCompat } from "@eslint/eslintrc";
-import type { FlatConfig } from "eslint-define-config";
-import { remixRules } from "./rules";
+import type { Linter } from "eslint";
+import { typescript } from "@wonse/eslint-ts";
+import { react } from "@wonse/eslint-react";
+import { remix } from "./rules/remix";
 
-const compat = new FlatCompat();
-
-export default function remix(): FlatConfig[] {
-  return [
-    {
-      files: ["**/*.{js,jsx,ts,tsx}"],
-      ...compat.extends("@remix-run/eslint-config"),
-    },
-    {
-      files: ["app/**/*.{js,jsx,ts,tsx}"],
-      rules: {
-        ...remixRules,
-      },
-    },
-    {
-      files: ["app/routes/**/*.{js,jsx,ts,tsx}"],
-      rules: {
-        "import/no-default-export": "off",
-      },
-    },
-  ];
+export function remixConfig(): Array<Linter.Config> {
+  return [...typescript(), ...react(), ...remix()];
 }
+
+export default remixConfig;

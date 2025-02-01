@@ -1,4 +1,4 @@
-import type { Feature } from "@zemd/eslint-common";
+import type { Feature } from "@wonse/eslint-common";
 import react from "eslint-plugin-react";
 import parserTs from "@typescript-eslint/parser";
 import a11y from "eslint-plugin-jsx-a11y";
