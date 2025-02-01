@@ -6,9 +6,11 @@
 
 This monorepo contains the following packages:
 
-- 🔧 [@wonse/eslint-config-common](./packages/common) - Common ESLint rules shared across all presets
-- ⚡️ [@wonse/eslint-config-js](./packages/js) - ESLint preset for JavaScript projects
-- 🚀 [@wonse/eslint-config-next](./packages/next) - ESLint preset for Next.js projects
+- 🔧 [@wonse/eslint-common](./packages/common) - Common ESLint rules shared across all presets
+- ⚡️ [@wonse/eslint-js](./packages/js) - ESLint preset for JavaScript projects
+- 🚀 [@wonse/eslint-next](./packages/next) - ESLint preset for Next.js projects
+- ⚛️ [@wonse/eslint-react](./packages/react) - ESLint preset for React projects
+- 🎵 [@wonse/eslint-remix](./packages/remix) - ESLint preset for Remix projects
 
 ## 🚀 Quick Start
 
@@ -16,21 +18,31 @@ Choose the appropriate preset for your project:
 
 ```bash
 # For JavaScript projects
-npm install -D @wonse/eslint-config-js
+npm install -D @wonse/eslint-js
 
 # For Next.js projects
-npm install -D @wonse/eslint-config-next
+npm install -D @wonse/eslint-next
+
+# For React projects
+npm install -D @wonse/eslint-react
+
+# For Remix projects
+npm install -D @wonse/eslint-remix
 ```
 
 ## 📝 Usage Example
 
 ```javascript
 // eslint.config.js
-import js from "@wonse/eslint-config-js";
+import js from "@wonse/eslint-js";
 // or
-import next from "@wonse/eslint-config-next";
+import next from "@wonse/eslint-next";
+// or
+import react from "@wonse/eslint-react";
+// or
+import remix from "@wonse/eslint-remix";
 
-export default js(); // or next();
+export default js(); // or next() or react() or remix();
 ```
 
 ## 🏗 Project Structure
@@ -39,7 +51,9 @@ export default js(); // or next();
 packages/
 ├── common/     # Common ESLint rules
 ├── js/         # JavaScript preset
-└── next/       # Next.js preset
+├── next/       # Next.js preset
+├── react/      # React preset
+└── remix/      # Remix preset
 ```
 
 ## 💻 Development
