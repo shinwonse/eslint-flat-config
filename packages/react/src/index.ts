@@ -2,6 +2,7 @@ import type { Linter } from "eslint";
 import { reactRules } from "./rules/react-rules";
 import { hooksRules } from "./rules/hooks-rules";
 import { a11yRules } from "./rules/a11y-rules";
+import { importRules } from "./rules/import-rules";
 
 export interface ReactOptions {
   /**
@@ -21,6 +22,12 @@ export interface ReactOptions {
    * @default true
    */
   hooks?: boolean;
+
+  /**
+   * Whether to enable import rules
+   * @default true
+   */
+  import?: boolean;
 }
 
 /**
@@ -31,6 +38,7 @@ export function react(options: ReactOptions = {}): Linter.FlatConfig[] {
     strict = true,
     a11y = true,
     hooks = true,
+    import: enableImport = true,
   } = options;
 
   const baseRules = strict
@@ -49,6 +57,7 @@ export function react(options: ReactOptions = {}): Linter.FlatConfig[] {
         react: require("eslint-plugin-react"),
         "react-hooks": require("eslint-plugin-react-hooks"),
         "jsx-a11y": require("eslint-plugin-jsx-a11y"),
+        import: require("eslint-plugin-import"),
       },
       settings: {
         react: {
@@ -59,6 +68,7 @@ export function react(options: ReactOptions = {}): Linter.FlatConfig[] {
         ...baseRules,
         ...(hooks ? hooksRules : {}),
         ...(a11y ? a11yRules : {}),
+        ...(enableImport ? importRules : {}),
       },
     },
   ];
