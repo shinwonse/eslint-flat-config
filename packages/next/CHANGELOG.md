@@ -1,5 +1,13 @@
 # @wonse/eslint-next
 
+## 2.1.1
+
+### Patch Changes
+
+- 372a90a: Refactor Next.js ESLint configuration to use @wonse/eslint-react package
+- Updated dependencies [046d538]
+  - @wonse/eslint-react@2.1.1
+
 ## 2.1.0
 
 ### Minor Changes

@@ -1,6 +1,6 @@
 {
   "name": "@wonse/eslint-react",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "ESLint configuration for React projects with modern best practices",
   "author": {
     "name": "Wonse Shin",
