@@ -3,7 +3,7 @@
 "@wonse/eslint-js": minor
 "@wonse/eslint-next": minor
 "@wonse/eslint-react": minor
-"@wonse/eslint-config-remix": minor
+"@wonse/eslint-remix": minor
 "@wonse/eslint-ts": minor
 ---
 
