@@ -1,5 +1,11 @@
 # @wonse/eslint-react
 
+## 2.1.1
+
+### Patch Changes
+
+- 046d538: Add import rules to React ESLint configuration
+
 ## 2.1.0
 
 ### Minor Changes
