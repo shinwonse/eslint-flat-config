@@ -1,6 +1,6 @@
-# @wonse/eslint-js
+# @wonse/eslint-remix
 
-## 3.1.0
+## 2.1.0
 
 ### Minor Changes
 
@@ -12,25 +12,5 @@
 - Updated dependencies [d208e07]
 - Updated dependencies [5fcc3f2]
   - @wonse/eslint-common@3.1.0
-
-## 3.0.0
-
-### Major Changes
-
-- 49c48d9: gogo
-
-### Patch Changes
-
-- Updated dependencies [49c48d9]
-  - @wonse/eslint-common@3.0.0
-
-## 2.0.0
-
-### Major Changes
-
-- ca68d58: improve packages
-
-### Patch Changes
-
-- Updated dependencies [ca68d58]
-  - @wonse/eslint-common@2.0.0
+  - @wonse/eslint-react@2.1.0
+  - @wonse/eslint-ts@3.1.0
