@@ -7,6 +7,7 @@ Shared ESLint configuration for JavaScript projects using the new [ESLint flat c
 - 🎯 Optimized for modern JavaScript development
 - 🔄 Uses the new ESLint flat config system
 - 🎨 Integrates with Prettier for consistent code formatting
+- ✅ Comprehensive test suite using ESLint's RuleTester
 - 📦 Includes carefully selected plugins and rules:
   - `eslint-plugin-import`: Better import/export syntax handling
   - `eslint-plugin-simple-import-sort`: Automated import sorting
@@ -85,6 +86,38 @@ This configuration includes a carefully selected set of rules from various plugi
 
 - Ensures safe and optimal regex patterns
 - Prevents common regex mistakes
+
+## Testing
+
+This package includes a comprehensive test suite that verifies all included ESLint rules are working as expected. The tests use ESLint's `RuleTester` class to validate both valid and invalid code patterns for each rule.
+
+### Running Tests
+
+```bash
+# Using npm
+npm test
+
+# Using yarn
+yarn test
+
+# Using pnpm
+pnpm test
+```
+
+### Test Coverage
+
+The test suite covers:
+
+- JavaScript Best Practices (e.g., no-var, no-console)
+- Import/Export Rules (e.g., simple-import-sort)
+- Promise Handling (e.g., require-await)
+- Code Quality Rules (e.g., sonarjs/no-identical-expressions)
+
+Each rule is tested with:
+
+- ✅ Valid code examples that should pass
+- ❌ Invalid code examples that should fail
+- 🔄 Autofix output where applicable
 
 ## Contributing
 
