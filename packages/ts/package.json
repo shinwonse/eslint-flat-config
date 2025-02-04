@@ -1,0 +1,58 @@
+{
+  "name": "@wonse/eslint-ts",
+  "version": "1.0.0",
+  "description": "Shared ESLint config for TypeScript projects",
+  "publishConfig": {
+    "access": "public"
+  },
+  "author": {
+    "name": "Wonse Shin",
+    "email": "sinwonse@gmail.com",
+    "url": "https://github.com/shinwonse"
+  },
+  "homepage": "https://github.com/shinwonse/eslint-flat-config",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/shinwonse/eslint-flat-config.git"
+  },
+  "bugs": {
+    "url": "https://github.com/shinwonse/eslint-flat-config/issues"
+  },
+  "files": [
+    "dist"
+  ],
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "peerDependencies": {
+    "eslint": ">=9.2.0"
+  },
+  "dependencies": {
+    "@typescript-eslint/eslint-plugin": "^8.23.0",
+    "@typescript-eslint/parser": "^8.23.0",
+    "@wonse/eslint-js": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/eslint": "catalog:",
+    "@types/eslint__js": "catalog:",
+    "@wonse/tsconfig": "catalog:",
+    "eslint": "catalog:",
+    "tsup": "catalog:",
+    "typescript": "catalog:",
+    "vitest": "catalog:"
+  },
+  "scripts": {
+    "build": "tsup-node --minify",
+    "dev": "tsup-node --watch",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  }
+}
