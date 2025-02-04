@@ -50,7 +50,8 @@
     "@typescript-eslint/parser": "^7.0.0",
     "eslint": "catalog:",
     "tsup": "catalog:",
-    "typescript": "catalog:"
+    "typescript": "catalog:",
+    "vitest": "catalog:"
   },
   "scripts": {
     "build": "tsup-node --minify",
