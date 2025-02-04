@@ -21,8 +21,6 @@ jobs:
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
 
       - name: Setup pnpm
         uses: pnpm/action-setup@fe02b34f77f8bc703788d5817da081398fad5dd2 # v4.0.0
@@ -36,9 +34,10 @@ jobs:
           cache: 'pnpm'
 
       - name: Install Dependencies
-        run: |
-          pnpm config set auto-install-peers true
-          pnpm install --no-frozen-lockfile
+        run: pnpm install
+
+      - name: Run Tests
+        run: pnpm test
 
       - name: Create Release Pull Request or Publish to npm
         id: changesets
