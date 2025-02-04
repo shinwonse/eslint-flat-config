@@ -1,51 +1,24 @@
-/**
- * @wonse/eslint-js
- * ESLint configuration for JavaScript projects with modern best practices.
- * 
- * Features:
- * - Core JavaScript rules for error prevention and best practices
- * - Modern JavaScript features and patterns
- * - Unicorn plugin for additional best practices
- * - JSON file support
- */
+import type { ESLint } from 'eslint';
+import prettier from 'eslint-config-prettier';
+import globals from 'globals';
+import { plugins, rules } from './rules';
 
-import type { ESLint, Linter } from "eslint";
-import { GLOB_JS, GLOB_JSON } from "@wonse/eslint-common";
-
-import { coreRules } from "./rules/core-rules";
-import { unicornRules } from "./rules/unicorn-rules";
-import { jsonRules } from "./rules/json-rules";
-
-import unicorn from "eslint-plugin-unicorn";
-import json from "@eslint/json";
-
-/**
- * Default JavaScript ESLint configuration
- */
-export function javascript(): Array<Linter.Config> {
+export default function createConfig(options: { files?: string[] } = {}): ESLint.ConfigData[] {
   return [
     {
-      // Core JavaScript rules
-      name: "wonse/javascript/core",
-      files: [GLOB_JS],
-      plugins: {
-        unicorn: unicorn as unknown as ESLint.Plugin,
+      files: options.files ?? ['**/*.{js,mjs,cjs}'],
+      languageOptions: {
+        ecmaVersion: 2022,
+        sourceType: 'module',
+        globals: {
+          ...globals.browser,
+          ...globals.es2021,
+          ...globals.node,
+        },
       },
-      rules: {
-        ...coreRules,
-        ...unicornRules,
-      },
+      plugins,
+      rules,
     },
-    {
-      // JSON file rules
-      name: "wonse/javascript/json",
-      files: [GLOB_JSON],
-      plugins: {
-        json: json as unknown as ESLint.Plugin,
-      },
-      rules: jsonRules,
-    },
+    prettier, // should be last to override other formatting rules
   ];
 }
-
-export default javascript;

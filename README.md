@@ -1,70 +1,42 @@
-# @wonse/eslint-config
+# eslint-flat-config
 
-🎯 A collection of modern ESLint flat config presets for various JavaScript/TypeScript environments.
+A collection of shareable ESLint configurations using the new [ESLint flat config](https://eslint.org/docs/latest/use/configure/configuration-files-new) system.
 
-## 📦 Packages
+## Available Configurations
 
-This monorepo contains the following packages:
+### [@wonse/eslint-js](./packages/js)
 
-- 🔧 [@wonse/eslint-common](./packages/common) - Common ESLint rules shared across all presets
-- ⚡️ [@wonse/eslint-js](./packages/js) - ESLint preset for JavaScript projects
-- 🚀 [@wonse/eslint-next](./packages/next) - ESLint preset for Next.js projects
-- ⚛️ [@wonse/eslint-react](./packages/react) - ESLint preset for React projects
-- 🎵 [@wonse/eslint-remix](./packages/remix) - ESLint preset for Remix projects
-
-## 🚀 Quick Start
-
-Choose the appropriate preset for your project:
+Base JavaScript configuration with modern best practices and carefully selected plugins.
 
 ```bash
-# For JavaScript projects
-npm install -D @wonse/eslint-js
-
-# For Next.js projects
-npm install -D @wonse/eslint-next
-
-# For React projects
-npm install -D @wonse/eslint-react
-
-# For Remix projects
-npm install -D @wonse/eslint-remix
+npm install --save-dev @wonse/eslint-js
 ```
 
-## 📝 Usage Example
+[Read more about @wonse/eslint-js](./packages/js/README.md)
 
-```javascript
-// eslint.config.js
-import js from "@wonse/eslint-js";
-// or
-import next from "@wonse/eslint-next";
-// or
-import react from "@wonse/eslint-react";
-// or
-import remix from "@wonse/eslint-remix";
+## Features
 
-export default js(); // or next() or react() or remix();
-```
+- 📦 Modern ESLint flat config system
+- 🎯 Optimized for different JavaScript environments
+- 🔧 Easy to extend and customize
+- 🎨 Prettier integration out of the box
 
-## 🏗 Project Structure
+## Project Structure
 
 ```
-packages/
-├── common/     # Common ESLint rules
-├── js/         # JavaScript preset
-├── next/       # Next.js preset
-├── react/      # React preset
-└── remix/      # Remix preset
+eslint-flat-config/
+├── packages/
+│   └── js/          # Base JavaScript configuration
+└── package.json     # Monorepo root package.json
 ```
 
-## 💻 Development
+## Contributing
 
-This project uses:
+Contributions are always welcome! Please read our contributing guidelines before submitting a pull request.
 
-- 📦 pnpm for package management
-- 🏃 Turborepo for build system
-- 📘 TypeScript for development
+### Development
 
-### 🛠 Setup
+This is a monorepo using pnpm workspaces. To get started:
 
 ```bash
 # Install dependencies
@@ -77,18 +49,6 @@ pnpm build
 pnpm test
 ```
 
-## 🤝 Contributing
+## License
 
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
-## 📄 License
-
-MIT
-
-## 👤 Author
-
-wonse
+MIT © [Wonse Shin](https://github.com/shinwonse)
