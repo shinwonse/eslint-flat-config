@@ -1,42 +1,83 @@
-# eslint-flat-config
+# @wonse/eslint-flat-config
 
-A collection of shareable ESLint configurations using the new [ESLint flat config](https://eslint.org/docs/latest/use/configure/configuration-files-new) system.
+> Modern ESLint Flat Configurations for JavaScript and TypeScript Projects
 
-## Available Configurations
+This monorepo contains a collection of shareable ESLint configurations using the new [ESLint Flat Config](https://eslint.org/docs/latest/use/configure/configuration-files-new) format.
 
-### [@wonse/eslint-js](./packages/js)
+## Packages
 
-Base JavaScript configuration with modern best practices and carefully selected plugins.
-
-```bash
-npm install --save-dev @wonse/eslint-js
-```
-
-[Read more about @wonse/eslint-js](./packages/js/README.md)
+| Package | Version | Description |
+|---------|---------|-------------|
+| [@wonse/eslint-js](./packages/js) | [![npm](https://img.shields.io/npm/v/@wonse/eslint-js.svg)](https://npmjs.com/package/@wonse/eslint-js) | JavaScript/Node.js ESLint configuration |
+| [@wonse/eslint-ts](./packages/ts) | [![npm](https://img.shields.io/npm/v/@wonse/eslint-ts.svg)](https://npmjs.com/package/@wonse/eslint-ts) | TypeScript ESLint configuration |
 
 ## Features
 
-- 📦 Modern ESLint flat config system
-- 🎯 Optimized for different JavaScript environments
-- 🔧 Easy to extend and customize
-- 🎨 Prettier integration out of the box
+- 📦 Modern ESLint Flat Config format
+- 🔄 Consistent code style across projects
+- 🎯 Specialized configurations for JavaScript and TypeScript
+- ✨ Automatic code formatting with Prettier integration
+- 🚀 Easy to extend and customize
 
-## Project Structure
+## Getting Started
 
+Choose the configuration package that matches your project:
+
+### For JavaScript/Node.js Projects
+
+```bash
+# Using pnpm
+pnpm add -D @wonse/eslint-js
+
+# Using npm
+npm install --save-dev @wonse/eslint-js
+
+# Using yarn
+yarn add -D @wonse/eslint-js
 ```
-eslint-flat-config/
-├── packages/
-│   └── js/          # Base JavaScript configuration
-└── package.json     # Monorepo root package.json
+
+### For TypeScript Projects
+
+```bash
+# Using pnpm
+pnpm add -D @wonse/eslint-ts
+
+# Using npm
+npm install --save-dev @wonse/eslint-ts
+
+# Using yarn
+yarn add -D @wonse/eslint-ts
 ```
 
-## Contributing
+## Usage
 
-Contributions are always welcome! Please read our contributing guidelines before submitting a pull request.
+Create an `eslint.config.js` file in your project root:
 
-### Development
+### JavaScript Projects
 
-This is a monorepo using pnpm workspaces. To get started:
+```javascript
+import jsConfig from '@wonse/eslint-js';
+
+export default jsConfig;
+```
+
+### TypeScript Projects
+
+```javascript
+import tsConfig from '@wonse/eslint-ts';
+
+export default tsConfig;
+```
+
+## Requirements
+
+- Node.js >= 18.x
+- ESLint >= 9.x
+- TypeScript >= 5.x (for @wonse/eslint-ts)
+
+## Development
+
+This repository uses pnpm workspaces and Turborepo for managing packages.
 
 ```bash
 # Install dependencies
@@ -47,8 +88,31 @@ pnpm build
 
 # Run tests
 pnpm test
+
+# Run tests in watch mode
+pnpm test:watch
+
+# Lint code
+pnpm lint
+
+# Format code
+pnpm format
 ```
+
+## Contributing
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'feat: add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
 ## License
 
 MIT © [Wonse Shin](https://github.com/shinwonse)
+
+## Acknowledgments
+
+- [ESLint](https://eslint.org/)
+- [TypeScript ESLint](https://typescript-eslint.io/)
+- [Prettier](https://prettier.io/)
