@@ -2,6 +2,9 @@
   "name": "@wonse/eslint-js",
   "version": "1.1.0",
   "description": "Shared ESLint config for JavaScript projects",
+  "publishConfig": {
+    "access": "public"
+  },
   "author": {
     "name": "Wonse Shin",
     "email": "sinwonse@gmail.com",
