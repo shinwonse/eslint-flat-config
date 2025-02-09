@@ -46,8 +46,8 @@ importers:
         specifier: ^3.0.5
         version: 3.0.5(vitest@3.0.5(@types/node@22.13.1))
       '@wonse/tsconfig':
-        specifier: ^2.0.1
-        version: 2.0.1
+        specifier: ^3.0.0
+        version: 3.0.0
       prettier:
         specifier: ^3.4.2
         version: 3.4.2
@@ -1024,6 +1024,9 @@ packages:
 
   '@wonse/tsconfig@2.0.1':
     resolution: {integrity: sha512-1yb716RxpD6ZDE+I8n9IlstByw+pQI/QyAXJ+3G3b2oLRwmhWeSvTxpHsHPRBVIEQd/OzGK03kHrcwFzZwlyIA==}
+
+  '@wonse/tsconfig@3.0.0':
+    resolution: {integrity: sha512-hdixXBGOcIiIf2N26J4w6KMjvqrnJlE2EW3QUGZQo0GgQyK4we1FFWY1Jj4YPOAqQ2EvLvdHX7E20zIlFpqKvw==}
 
   acorn-jsx@5.3.2:
     resolution: {integrity: sha512-rq9s+JNhf0IChjtDXxllJ7g41oZk5SlXtp0LHwyA5cejwn7vKmKp4pPri6YEePv2PU65sAsegbXtIinmDFDXgQ==}
@@ -3805,6 +3808,8 @@ snapshots:
       tinyrainbow: 2.0.0
 
   '@wonse/tsconfig@2.0.1': {}
+
+  '@wonse/tsconfig@3.0.0': {}
 
   acorn-jsx@5.3.2(acorn@8.14.0):
     dependencies:
