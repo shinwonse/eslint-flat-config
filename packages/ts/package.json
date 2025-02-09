@@ -1,6 +1,6 @@
 {
   "name": "@wonse/eslint-ts",
-  "version": "3.0.0",
+  "version": "4.0.0",
   "description": "Shared ESLint config for TypeScript projects",
   "publishConfig": {
     "access": "public"
