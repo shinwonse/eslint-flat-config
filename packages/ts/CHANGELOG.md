@@ -1,5 +1,12 @@
 # @wonse/eslint-ts
 
+## 4.0.1
+
+### Patch Changes
+
+- Updated dependencies [759e0f2]
+  - @wonse/eslint-js@4.1.0
+
 ## 4.0.0
 
 ### Major Changes
