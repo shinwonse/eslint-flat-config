@@ -1,6 +1,6 @@
 {
   "name": "@wonse/eslint-js",
-  "version": "4.2.1",
+  "version": "4.3.0",
   "description": "Shared ESLint config for JavaScript projects",
   "publishConfig": {
     "access": "public"

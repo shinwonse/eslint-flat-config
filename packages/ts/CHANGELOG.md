@@ -1,5 +1,18 @@
 # @wonse/eslint-ts
 
+## 4.2.0
+
+### Minor Changes
+
+- 04f08c2: remove sonarjs
+
+### Patch Changes
+
+- 13794db: regenerate lock file
+- Updated dependencies [13794db]
+- Updated dependencies [04f08c2]
+  - @wonse/eslint-js@4.3.0
+
 ## 4.1.1
 
 ### Patch Changes
