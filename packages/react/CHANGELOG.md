@@ -1,5 +1,16 @@
 # @wonse/eslint-react
 
+## 5.0.0
+
+### Major Changes
+
+- a3735e8: major release
+
+### Patch Changes
+
+- Updated dependencies [a3735e8]
+  - @wonse/eslint-ts@5.0.0
+
 ## 4.3.1
 
 ### Patch Changes

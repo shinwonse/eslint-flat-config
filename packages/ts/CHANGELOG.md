@@ -1,5 +1,11 @@
 # @wonse/eslint-ts
 
+## 5.0.0
+
+### Major Changes
+
+- a3735e8: major release
+
 ## 4.2.1
 
 ### Patch Changes
