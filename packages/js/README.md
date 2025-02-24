@@ -32,22 +32,74 @@ pnpm add -D @wonse/eslint-js eslint
 Create an `eslint.config.js` file in your project root:
 
 ```js
-import createConfig from '@wonse/eslint-js';
+import jsConfig from '@wonse/eslint-js';
 
-export default createConfig();
+export default [
+  ...jsConfig,
+  // Your custom configurations (optional)
+];
 ```
 
-### Custom Configuration
+### Configuration Details
 
-You can customize the configuration by passing options:
+The base configuration includes:
 
+- Modern JavaScript features (ES2022)
+- Module-based development
+- Browser, ES2021, and Node.js globals
+- Prettier integration for formatting
+- Comprehensive set of plugins and rules
+
+### Extending the Configuration
+
+You can extend or override the configuration in several ways:
+
+1. **Adding New Rules**:
 ```js
-import createConfig from '@wonse/eslint-js';
+import jsConfig from '@wonse/eslint-js';
 
-export default createConfig({
-  // Specify files to lint (default: ['**/*.{js,mjs,cjs}'])
-  files: ['src/**/*.js'],
-});
+export default [
+  ...jsConfig,
+  {
+    rules: {
+      'no-console': 'off',
+      'import/no-default-export': 'error',
+    },
+  },
+];
+```
+
+2. **Targeting Specific Files**:
+```js
+import jsConfig from '@wonse/eslint-js';
+
+export default [
+  ...jsConfig,
+  {
+    files: ['src/**/*.js'],
+    rules: {
+      'no-console': 'warn',
+    },
+  },
+];
+```
+
+3. **Adding Custom Plugins**:
+```js
+import jsConfig from '@wonse/eslint-js';
+import somePlugin from 'eslint-plugin-some-plugin';
+
+export default [
+  ...jsConfig,
+  {
+    plugins: {
+      'some-plugin': somePlugin,
+    },
+    rules: {
+      'some-plugin/some-rule': 'error',
+    },
+  },
+];
 ```
 
 ## Included Rules
@@ -65,10 +117,34 @@ This configuration includes a carefully selected set of rules from various plugi
 
 ### Import/Export Rules
 
-- Sorts imports automatically
-- Ensures imports come first in file
-- Prevents duplicate imports
-- Enforces newlines after imports
+- Sorts imports automatically by groups:
+  - Built-in Node.js modules
+  - External packages
+  - Internal packages (with `@/` alias support)
+  - Parent/sibling imports
+  - Index imports
+  - Object imports
+  - Type imports
+- Enforces consistent import ordering:
+  - Alphabetical sorting within groups
+  - Required newlines between groups
+- Static analysis:
+  - Prevents circular dependencies (max depth: 1)
+  - Prevents self imports
+  - Prevents useless path segments
+  - Prevents absolute paths
+  - Prevents webpack loader syntax
+  - Prevents relative package imports
+- Helpful warnings:
+  - Warns about deprecated imports
+  - Prevents mutable exports
+  - Warns about unused modules
+- Style guide:
+  - No file extensions (except for .json)
+  - Default exports are optional
+  - Ensures imports come first in file
+  - Prevents duplicate imports
+  - Enforces newlines after imports
 
 ### Promise Handling
 
