@@ -5,10 +5,7 @@ export const rules: Linter.RulesRecord = {
     'error',
     { fixMixedExportsWithInlineTypeSpecifier: true },
   ],
-  '@typescript-eslint/consistent-type-imports': [
-    'error',
-    { fixStyle: 'inline-type-imports' },
-  ],
+  '@typescript-eslint/consistent-type-imports': ['error', { fixStyle: 'inline-type-imports' }],
   '@typescript-eslint/no-unused-vars': [
     'error',
     {
@@ -21,13 +18,12 @@ export const rules: Linter.RulesRecord = {
       ignoreRestSiblings: true,
     },
   ],
-  '@typescript-eslint/explicit-module-boundary-types': ['error'],
   '@typescript-eslint/method-signature-style': ['error'],
   '@typescript-eslint/no-import-type-side-effects': ['error'],
   '@typescript-eslint/no-useless-empty-export': ['error'],
   '@typescript-eslint/promise-function-async': ['error'],
   '@typescript-eslint/require-array-sort-compare': ['error'],
-  
+
   // Disabled rules that can be enabled per project
   '@typescript-eslint/no-unsafe-call': ['off'],
   '@typescript-eslint/no-explicit-any': ['off'],
@@ -37,6 +33,7 @@ export const rules: Linter.RulesRecord = {
   '@typescript-eslint/no-unsafe-argument': ['off'],
   '@typescript-eslint/no-empty-object-type': ['off'],
   '@typescript-eslint/no-unnecessary-type-parameters': ['off'],
+  '@typescript-eslint/explicit-module-boundary-types': ['off'],
 
   // Disable ESLint base rules in favor of TypeScript-specific ones
   'no-unused-vars': ['off'],
