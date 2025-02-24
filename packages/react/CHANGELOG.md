@@ -1,5 +1,11 @@
 # @wonse/eslint-react
 
+## 4.3.0
+
+### Minor Changes
+
+- 6c7027c: remove not real rules
+
 ## 4.2.1
 
 ### Patch Changes
