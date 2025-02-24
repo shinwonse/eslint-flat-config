@@ -1,5 +1,13 @@
 # @wonse/eslint-react
 
+## 4.1.2
+
+### Patch Changes
+
+- 565a090: gogo
+- Updated dependencies [565a090]
+  - @wonse/eslint-ts@4.1.1
+
 ## 4.1.1
 
 ### Patch Changes

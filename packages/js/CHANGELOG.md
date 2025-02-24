@@ -1,5 +1,11 @@
 # @wonse/eslint-js
 
+## 4.2.1
+
+### Patch Changes
+
+- 565a090: gogo
+
 ## 4.2.0
 
 ### Minor Changes
