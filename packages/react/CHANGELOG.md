@@ -1,5 +1,11 @@
 # @wonse/eslint-react
 
+## 4.2.1
+
+### Patch Changes
+
+- b931c51: remove no-unused-deps
+
 ## 4.2.0
 
 ### Minor Changes
