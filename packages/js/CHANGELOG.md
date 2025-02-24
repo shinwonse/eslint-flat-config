@@ -1,5 +1,15 @@
 # @wonse/eslint-js
 
+## 4.3.0
+
+### Minor Changes
+
+- 04f08c2: remove sonarjs
+
+### Patch Changes
+
+- 13794db: regenerate lock file
+
 ## 4.2.1
 
 ### Patch Changes
