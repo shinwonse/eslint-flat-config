@@ -11,7 +11,6 @@ Shared ESLint configuration for JavaScript projects using the new [ESLint flat c
 - 📦 Includes carefully selected plugins and rules:
   - `eslint-plugin-import`: Better import/export syntax handling
   - `eslint-plugin-simple-import-sort`: Automated import sorting
-  - `eslint-plugin-sonarjs`: Code quality rules
   - `eslint-plugin-promise`: Promise-related best practices
   - `eslint-plugin-regexp`: Regular expression safety and best practices
 
@@ -70,12 +69,6 @@ This configuration includes a carefully selected set of rules from various plugi
 - Ensures imports come first in file
 - Prevents duplicate imports
 - Enforces newlines after imports
-
-### Code Quality (via SonarJS)
-
-- Detects bugs and suspicious patterns
-- Maintains code reliability
-- Prevents complexity issues
 
 ### Promise Handling
 

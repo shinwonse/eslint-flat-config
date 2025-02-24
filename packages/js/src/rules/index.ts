@@ -3,21 +3,18 @@ import { bestPracticesRules } from './best-practices';
 import { importPlugins, importRules } from './imports';
 import { promisePlugins, promiseRules } from './promises';
 import { regexpPlugins, regexpRules } from './regexp';
-import { codeQualityPlugins, codeQualityRules } from './sonarjs';
 
 export const rules: ESLint.ConfigData['rules'] = {
   ...bestPracticesRules,
   ...importRules,
   ...promiseRules,
   ...regexpRules,
-  ...codeQualityRules,
 };
 
 export const pluginObjects = {
   ...importPlugins,
   ...promisePlugins,
   ...regexpPlugins,
-  ...codeQualityPlugins,
 } as const;
 
 type Plugin = {

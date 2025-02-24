@@ -94,22 +94,4 @@ describe('ESLint Rules', () => {
       );
     });
   });
-
-  describe('Code Quality Rules', () => {
-    it('should validate sonarjs/no-identical-expressions rule', () => {
-      ruleTester.run(
-        'sonarjs/no-identical-expressions',
-        { meta: {}, create: () => ({}) },
-        {
-          valid: ['if (a === b) { console.log("different"); }'],
-          invalid: [
-            {
-              code: 'if (a === a) { console.log("same"); }',
-              errors: [{ messageId: 'identicalExpressions' }],
-            },
-          ],
-        },
-      );
-    });
-  });
 });
