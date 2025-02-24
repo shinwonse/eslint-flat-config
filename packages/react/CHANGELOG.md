@@ -1,5 +1,11 @@
 # @wonse/eslint-react
 
+## 4.3.1
+
+### Patch Changes
+
+- @wonse/eslint-ts@4.2.1
+
 ## 5.0.0
 
 ### Major Changes
