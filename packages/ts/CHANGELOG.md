@@ -1,5 +1,18 @@
 # @wonse/eslint-ts
 
+## 5.0.0
+
+### Major Changes
+
+- Remove function-based config in favor of direct config export
+- Add TypeScript as a peer dependency
+- Simplify configuration extension pattern
+
+### Minor Changes
+
+- Update documentation with new usage examples
+- Improve type definitions for better IDE support
+
 ## 4.2.0
 
 ### Minor Changes

@@ -1,5 +1,20 @@
 # @wonse/eslint-react
 
+## 5.0.0
+
+### Major Changes
+
+- Remove function-based config in favor of direct config export
+- Add TypeScript as a peer dependency
+- Remove beta and unused plugins
+- Simplify configuration extension pattern
+
+### Minor Changes
+
+- Update documentation with new usage examples
+- Improve type definitions for better IDE support
+- Add more detailed plugin configurations
+
 ## 4.3.0
 
 ### Minor Changes

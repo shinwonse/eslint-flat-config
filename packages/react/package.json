@@ -33,7 +33,8 @@
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "peerDependencies": {
-    "eslint": ">=9.2.0"
+    "eslint": ">=9.2.0",
+    "typescript": ">=5.0.0"
   },
   "dependencies": {
     "@typescript-eslint/parser": "^8.23.0",
@@ -41,12 +42,10 @@
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-jsx-a11y": "^6.10.2",
     "eslint-plugin-react": "^7.37.4",
-    "eslint-plugin-react-compiler": "19.0.0-beta-714736e-20250131",
     "eslint-plugin-react-hooks": "^5.1.0",
     "eslint-plugin-react-hooks-extra": "^1.26.1",
     "eslint-plugin-react-perf": "^3.3.1",
     "eslint-plugin-react-refresh": "^0.4.5",
-    "eslint-plugin-react-web-api": "^1.26.1",
     "globals": "^14.0.0"
   },
   "devDependencies": {
