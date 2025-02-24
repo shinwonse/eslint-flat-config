@@ -4,30 +4,29 @@ Shared ESLint configuration for React projects using the new [ESLint flat config
 
 ## Features
 
-- 🎯 Optimized for modern React and TypeScript development
+- 🎯 Optimized for modern React development
 - 🔄 Uses the new ESLint flat config system
 - 🎨 Integrates with Prettier for consistent code formatting
-- ✅ Comprehensive test suite using ESLint's RuleTester
-- 📦 Includes carefully selected plugins and rules:
+- ⚛️ React-specific best practices and hooks rules
+- 📦 Includes carefully selected plugins:
   - `eslint-plugin-react`: Core React rules
-  - `eslint-plugin-react-hooks`: React Hooks best practices
-  - `eslint-plugin-react-hooks-extra`: Additional Hooks optimizations
+  - `eslint-plugin-react-hooks`: React Hooks rules
+  - `eslint-plugin-react-hooks-extra`: Additional Hooks rules
   - `eslint-plugin-jsx-a11y`: Accessibility rules
-  - `eslint-plugin-react-perf`: Performance optimizations
-  - `eslint-plugin-react-refresh`: Fast Refresh support
-  - `eslint-plugin-react-web-api`: Web API safety
+  - `eslint-plugin-react-refresh`: Fast Refresh compatibility
+  - `eslint-plugin-react-perf`: Performance rules
 
 ## Installation
 
 ```bash
 # Using npm
-npm install --save-dev @wonse/eslint-react eslint
+npm install --save-dev @wonse/eslint-react eslint typescript
 
 # Using yarn
-yarn add --dev @wonse/eslint-react eslint
+yarn add --dev @wonse/eslint-react eslint typescript
 
 # Using pnpm
-pnpm add -D @wonse/eslint-react eslint
+pnpm add -D @wonse/eslint-react eslint typescript
 ```
 
 ## Usage
@@ -35,105 +34,116 @@ pnpm add -D @wonse/eslint-react eslint
 Create an `eslint.config.js` file in your project root:
 
 ```js
-import createConfig from '@wonse/eslint-react';
+import reactConfig from '@wonse/eslint-react';
 
-export default createConfig();
+export default [
+  ...reactConfig,
+  // Your custom configurations (optional)
+];
 ```
 
-### Custom Configuration
+### Configuration Details
 
-You can customize the configuration by passing options:
+The base configuration includes:
 
+- All TypeScript rules from `@wonse/eslint-ts`
+- React-specific parser configuration
+- JSX support
+- React Hooks rules
+- Accessibility (a11y) rules
+- Performance optimization rules
+- Integration with your project's `tsconfig.json`
+
+### Extending the Configuration
+
+You can extend or override the configuration in several ways:
+
+1. **Adding New Rules**:
 ```js
-import createConfig from '@wonse/eslint-react';
+import reactConfig from '@wonse/eslint-react';
 
-export default createConfig({
-  // Specify files to lint (default: ['**/*.{jsx,tsx}'])
-  files: ['src/**/*.tsx'],
-  // TypeScript configuration
-  typescript: {
-    project: './tsconfig.json',
+export default [
+  ...reactConfig,
+  {
+    rules: {
+      'react/jsx-no-leaked-render': 'error',
+      'react-hooks/exhaustive-deps': 'error',
+    },
   },
-  // React configuration
-  react: {
-    version: 'detect',
+];
+```
+
+2. **Targeting Specific Files**:
+```js
+import reactConfig from '@wonse/eslint-react';
+
+export default [
+  ...reactConfig,
+  {
+    files: ['src/**/*.tsx'],
+    rules: {
+      'react/function-component-definition': ['error', {
+        namedComponents: 'arrow-function',
+      }],
+    },
   },
-});
+];
+```
+
+3. **Custom Settings**:
+```js
+import reactConfig from '@wonse/eslint-react';
+
+export default [
+  ...reactConfig,
+  {
+    settings: {
+      react: {
+        version: '18.2.0',
+      },
+    },
+  },
+];
 ```
 
 ## Included Rules
 
-This configuration includes a carefully selected set of rules from various plugins:
+This configuration includes carefully selected rules from various plugins:
 
-### Core React Rules
+### React Core Rules
 
-- Enforces key prop in iterators
-- Prevents duplicate props
-- Enforces proper event handler naming
-- Prevents useless fragments
-- Controls JSX curly brace presence
-- Prevents array index as key
-- Prevents dangerous HTML injection
+- Enforces function component style
+- Prevents common JSX mistakes
+- Ensures proper prop types usage
+- Enforces consistent component organization
 
 ### React Hooks Rules
 
 - Enforces Rules of Hooks
-- Validates dependency arrays
-- Prevents unused dependencies
-- Optimizes hook usage patterns
+- Ensures proper dependencies in useEffect
+- Prevents common hooks mistakes
+- Optimizes hooks performance
 
-### Accessibility (a11y) Rules
+### JSX Accessibility Rules
 
+- Ensures proper ARIA attributes
+- Enforces semantic HTML
 - Requires alt text for images
-- Enforces ARIA props and roles
-- Ensures keyboard event handlers
-- Prevents positive tabindex
-- Enforces interactive element patterns
+- Ensures keyboard navigation
 
 ### Performance Rules
 
-- Prevents inline object creation
-- Prevents inline array creation
-- Prevents inline function creation
-- Optimizes component rendering
+- Prevents unnecessary re-renders
+- Optimizes memo usage
+- Ensures proper key usage in lists
+- Prevents expensive operations in render
 
-### React Refresh Rules
+### TypeScript Integration
 
-- Ensures proper Fast Refresh support
-- Controls component exports
-
-## Testing
-
-This package includes a comprehensive test suite that verifies all included ESLint rules are working as expected. The tests use ESLint's `RuleTester` class to validate both valid and invalid code patterns for each rule.
-
-### Running Tests
-
-```bash
-# Using npm
-npm test
-
-# Using yarn
-yarn test
-
-# Using pnpm
-pnpm test
-```
-
-### Test Coverage
-
-The test suite covers:
-
-- Core React Rules (e.g., jsx-key, jsx-no-useless-fragment)
-- React Hooks Rules (e.g., rules-of-hooks, exhaustive-deps)
-- Accessibility Rules (e.g., alt-text, click-events-have-key-events)
-- Performance Rules (e.g., jsx-no-new-object-as-prop)
-- React Refresh Rules (e.g., only-export-components)
-
-Each rule is tested with:
-
-- ✅ Valid code examples that should pass
-- ❌ Invalid code examples that should fail
-- 🔄 Autofix output where applicable
+- Full TypeScript support
+- Proper types for props and state
+- Type-aware rules
+- Generic components support
 
 ## Contributing
 

@@ -1,121 +1,142 @@
 # @wonse/eslint-ts
 
-> TypeScript ESLint configuration preset with strict type checking and best practices.
+Shared ESLint configuration for TypeScript projects using the new [ESLint flat config](https://eslint.org/docs/latest/use/configure/configuration-files-new).
 
 ## Features
 
-- Strict type checking rules from `@typescript-eslint/eslint-plugin`
-- Consistent type imports and exports
-- Proper handling of unused variables
-- Async/Promise function conventions
-- Method signature style enforcement
-- Integration with `@wonse/eslint-js` base rules
+- 🎯 Optimized for modern TypeScript development
+- 🔄 Uses the new ESLint flat config system
+- 🎨 Integrates with Prettier for consistent code formatting
+- 🔍 Strict type checking rules enabled
+- 📦 Extends JavaScript configuration with TypeScript-specific rules
 
 ## Installation
 
 ```bash
-# Using pnpm
-pnpm add -D @wonse/eslint-ts
-
 # Using npm
-npm install --save-dev @wonse/eslint-ts
+npm install --save-dev @wonse/eslint-ts eslint typescript
 
 # Using yarn
-yarn add -D @wonse/eslint-ts
+yarn add --dev @wonse/eslint-ts eslint typescript
+
+# Using pnpm
+pnpm add -D @wonse/eslint-ts eslint typescript
 ```
 
 ## Usage
 
 Create an `eslint.config.js` file in your project root:
 
-```javascript
+```js
 import tsConfig from '@wonse/eslint-ts';
 
-export default tsConfig;
+export default [
+  ...tsConfig,
+  // Your custom configurations (optional)
+];
 ```
 
-### Requirements
+### Configuration Details
 
-- Node.js >= 18.x
-- ESLint >= 9.x
-- TypeScript >= 5.x
+The base configuration includes:
 
-## Rules
+- All JavaScript rules from `@wonse/eslint-js`
+- TypeScript parser configuration
+- Strict type-checking rules
+- TypeScript-specific best practices
+- Integration with your project's `tsconfig.json`
 
-### Type Imports/Exports
+### Extending the Configuration
 
-Enforces consistent usage of type imports and exports:
+You can extend or override the configuration in several ways:
 
-```typescript
-// ✅ Good
-import type { User } from './types';
-export type { Post } from './types';
+1. **Adding New Rules**:
+```js
+import tsConfig from '@wonse/eslint-ts';
 
-// ❌ Bad
-import { type User } from './types';
-export { type Post } from './types';
+export default [
+  ...tsConfig,
+  {
+    rules: {
+      '@typescript-eslint/explicit-function-return-type': 'error',
+      '@typescript-eslint/no-explicit-any': 'error',
+    },
+  },
+];
 ```
 
-### Unused Variables
+2. **Targeting Specific Files**:
+```js
+import tsConfig from '@wonse/eslint-ts';
 
-Allows unused variables with underscore prefix:
-
-```typescript
-// ✅ Good
-function handler(_unused: string) {
-  // ...
-}
-
-// ❌ Bad
-function handler(unused: string) {
-  // ...
-}
+export default [
+  ...tsConfig,
+  {
+    files: ['src/**/*.ts'],
+    rules: {
+      '@typescript-eslint/strict-boolean-expressions': 'error',
+    },
+  },
+];
 ```
 
-### Promise Functions
+3. **Custom Parser Options**:
+```js
+import tsConfig from '@wonse/eslint-ts';
 
-Enforces async keyword for functions returning promises:
-
-```typescript
-// ✅ Good
-async function fetchData(): Promise<string> {
-  return 'data';
-}
-
-// ❌ Bad
-function fetchData(): Promise<string> {
-  return Promise.resolve('data');
-}
+export default [
+  ...tsConfig,
+  {
+    files: ['**/*.ts'],
+    languageOptions: {
+      parserOptions: {
+        project: './tsconfig.build.json',
+      },
+    },
+  },
+];
 ```
 
-### Method Signatures
+## Included Rules
 
-Enforces consistent method signature style in interfaces and type literals:
+This configuration includes carefully selected rules from:
 
-```typescript
-// ✅ Good
-interface Test {
-  method: () => void;
-}
+### TypeScript-Specific Rules
 
-// ❌ Bad
-interface Test {
-  method(): void;
-}
-```
+- Strict type checking enabled
+- Prevents unsafe type assertions
+- Enforces explicit return types where beneficial
+- Ensures proper usage of generics
+- Prevents unnecessary type declarations
 
-## Extended Configurations
+### Type Assertions and Casting
 
-This configuration extends `@wonse/eslint-js` and includes additional TypeScript-specific rules. It's designed to work seamlessly with TypeScript projects while maintaining strict type checking and best practices.
+- Prefers type assertions over casting
+- Prevents unnecessary type assertions
+- Ensures type assertions are safe
+
+### Code Quality
+
+- Prevents unused variables and types
+- Enforces consistent type definitions
+- Ensures proper error handling
+- Prevents unreachable code
+
+### Best Practices
+
+- Enforces consistent type imports
+- Prevents unsafe type assumptions
+- Ensures proper null checks
+- Enforces proper Promise handling
 
 ## Contributing
 
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'feat: add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
+Contributions are welcome! Please feel free to submit a Pull Request.
 
 ## License
 
-MIT © [Wonse Shin](https://github.com/shinwonse) 
+MIT
+
+## Author
+
+Wonse Shin ([@shinwonse](https://github.com/shinwonse)) 

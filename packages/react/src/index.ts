@@ -10,68 +10,35 @@ import reactPerformancePlugin from 'eslint-plugin-react-perf';
 import reactRefreshPlugin from 'eslint-plugin-react-refresh';
 import { rules } from './rules';
 
-interface ReactConfigOptions {
-  files?: string[];
-  typescript?: {
-    project?: string;
-  };
-  react?: {
-    version?: string;
-  };
-}
-
-const DEFAULT_OPTIONS: Required<ReactConfigOptions> = {
-  files: ['**/*.{jsx,tsx}'],
-  typescript: {
-    project: './tsconfig.json',
-  },
-  react: {
-    version: 'detect',
-  },
-};
-
-export default function createReactConfig(options: ReactConfigOptions = {}): ESLint.ConfigData[] {
-  const finalOptions = {
-    ...DEFAULT_OPTIONS,
-    ...options,
-    typescript: {
-      ...DEFAULT_OPTIONS.typescript,
-      ...options.typescript,
-    },
-    react: {
-      ...DEFAULT_OPTIONS.react,
-      ...options.react,
-    },
-  };
-
-  return [
-    ...tsConfig(),
-    {
-      files: finalOptions.files,
-      languageOptions: {
-        parser: tsParser,
-        parserOptions: {
-          project: finalOptions.typescript.project,
-          ecmaFeatures: {
-            jsx: true,
-          },
+const reactConfig: ESLint.ConfigData[] = [
+  ...tsConfig,
+  {
+    files: ['**/*.{jsx,tsx}'],
+    languageOptions: {
+      parser: tsParser,
+      parserOptions: {
+        project: './tsconfig.json',
+        ecmaFeatures: {
+          jsx: true,
         },
       },
-      plugins: {
-        react: reactPlugin,
-        'react-hooks': reactHooksPlugin,
-        'react-hooks-extra': reactHooksExtraPlugin,
-        'jsx-a11y': jsxA11yPlugin,
-        'react-refresh': reactRefreshPlugin,
-        'react-perf': reactPerformancePlugin,
-      },
-      settings: {
-        react: {
-          version: finalOptions.react.version,
-        },
-      },
-      rules,
     },
-    prettier,
-  ];
-}
+    plugins: {
+      react: reactPlugin,
+      'react-hooks': reactHooksPlugin,
+      'react-hooks-extra': reactHooksExtraPlugin,
+      'jsx-a11y': jsxA11yPlugin,
+      'react-refresh': reactRefreshPlugin,
+      'react-perf': reactPerformancePlugin,
+    },
+    settings: {
+      react: {
+        version: 'detect',
+      },
+    },
+    rules,
+  },
+  prettier,
+] as const;
+
+export default reactConfig;
