@@ -1,5 +1,11 @@
 # @wonse/eslint-js
 
+## 5.0.0
+
+### Major Changes
+
+- 0f1c976: simplify package
+
 ## 4.3.0
 
 ### Minor Changes
