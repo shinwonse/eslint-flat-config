@@ -8,7 +8,6 @@ import reactHooksPlugin from 'eslint-plugin-react-hooks';
 import reactHooksExtraPlugin from 'eslint-plugin-react-hooks-extra';
 import reactPerformancePlugin from 'eslint-plugin-react-perf';
 import reactRefreshPlugin from 'eslint-plugin-react-refresh';
-import reactWebApiPlugin from 'eslint-plugin-react-web-api';
 import { rules } from './rules';
 
 interface ReactConfigOptions {
@@ -59,10 +58,9 @@ export default function createReactConfig(options: ReactConfigOptions = {}): ESL
         },
       },
       plugins: {
-        'react': reactPlugin,
+        react: reactPlugin,
         'react-hooks': reactHooksPlugin,
         'react-hooks-extra': reactHooksExtraPlugin,
-        'react-web-api': reactWebApiPlugin,
         'jsx-a11y': jsxA11yPlugin,
         'react-refresh': reactRefreshPlugin,
         'react-perf': reactPerformancePlugin,

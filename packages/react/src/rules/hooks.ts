@@ -1,10 +1,6 @@
 import type { Linter } from 'eslint';
+import reactHooksPlugin from 'eslint-plugin-react-hooks';
 
 export const hooksRules: Linter.RulesRecord = {
-  // React Hooks Rules
-  'react-hooks/rules-of-hooks': 'error',
-  'react-hooks/exhaustive-deps': 'warn',
-
-  // React Hooks Extra Rules
-  'react-hooks-extra/no-useless-custom-hooks': 'warn',
+  ...reactHooksPlugin.configs.recommended.rules,
 } as const;

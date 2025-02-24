@@ -1,5 +1,6 @@
 import type { Linter } from 'eslint';
+import reactRefreshPlugin from 'eslint-plugin-react-refresh';
 
 export const refreshRules: Linter.RulesRecord = {
-  'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
-} as const; 
+  ...reactRefreshPlugin.configs.recommended.rules,
+} as const;

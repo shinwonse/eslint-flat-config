@@ -1,7 +1,6 @@
 import type { Linter } from 'eslint';
+import reactPerfPlugin from 'eslint-plugin-react-perf';
 
 export const performanceRules: Linter.RulesRecord = {
-  'react-perf/jsx-no-new-object-as-prop': 'error',
-  'react-perf/jsx-no-new-array-as-prop': 'error',
-  'react-perf/jsx-no-new-function-as-prop': 'error',
-} as const; 
+  ...reactPerfPlugin.configs.recommended.rules,
+} as const;
