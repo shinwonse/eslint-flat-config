@@ -6,39 +6,55 @@ A collection of modern ESLint configurations using the new [ESLint flat config](
 
 This monorepo contains the following ESLint configurations:
 
-### [@wonse/eslint-js](./packages/js)
+### [@wonse/eslint-js](./packages/js) (v5.0.0)
 
 Base JavaScript configuration with modern best practices.
 
 - 🎯 Optimized for modern JavaScript development
-- 📦 Includes plugins for imports, promises, and code quality
-- 🔍 SonarJS integration for advanced static analysis
+- 📦 Includes essential plugins:
+  - `eslint-plugin-import`: For import/export syntax
+  - `eslint-plugin-promise`: For Promise-related best practices
+  - `eslint-plugin-regexp`: For regular expression patterns
+  - `eslint-plugin-simple-import-sort`: For consistent import ordering
+- 🔍 Integrates with Prettier for consistent code style
+- 🚀 Requires ESLint >=9.2.0
 
 ```bash
 pnpm add -D @wonse/eslint-js
 ```
 
-### [@wonse/eslint-ts](./packages/ts)
+### [@wonse/eslint-ts](./packages/ts) (v5.0.0)
 
 TypeScript-specific rules and configurations.
 
 - 🎯 Built on top of @wonse/eslint-js
-- 📝 TypeScript-specific rules and best practices
+- 📝 Powered by @typescript-eslint/eslint-plugin and parser
 - 🔄 Seamless integration with TypeScript projects
+- ✨ Advanced TypeScript-specific rules for:
+  - Type imports/exports consistency
+  - Promise handling
+  - Array operations
+  - Method signatures
+- 🚀 Requires ESLint >=9.2.0 and TypeScript >=5.0.0
 
 ```bash
 pnpm add -D @wonse/eslint-ts
 ```
 
-### [@wonse/eslint-react](./packages/react)
+### [@wonse/eslint-react](./packages/react) (v5.0.0)
 
 React and TypeScript configuration with modern best practices.
 
 - 🎯 Built on top of @wonse/eslint-ts
-- ⚛️ Comprehensive React and Hooks rules
-- ♿️ Accessibility (a11y) best practices
-- 🚀 Performance optimizations
-- 🔄 Fast Refresh support
+- ⚛️ Comprehensive React ecosystem support:
+  - `eslint-plugin-react`: Core React rules
+  - `eslint-plugin-react-hooks`: Hooks-specific rules
+  - `eslint-plugin-react-hooks-extra`: Additional hooks patterns
+  - `eslint-plugin-react-perf`: Performance optimization rules
+  - `eslint-plugin-react-refresh`: Fast Refresh compatibility
+- ♿️ Accessibility (a11y) best practices via eslint-plugin-jsx-a11y
+- 🔍 Prettier integration for consistent formatting
+- 🚀 Requires ESLint >=9.2.0 and TypeScript >=5.0.0
 
 ```bash
 pnpm add -D @wonse/eslint-react
@@ -54,53 +70,102 @@ pnpm add -D @wonse/eslint-react
 
 ## Usage
 
-Each package can be used independently. Here's a quick example for each:
+Each package exports an array of ESLint flat configurations that can be spread into your `eslint.config.js`.
 
-### JavaScript
-
-```js
-// eslint.config.js
-import createJSConfig from '@wonse/eslint-js';
-
-export default createJSConfig();
-```
-
-### TypeScript
+### JavaScript Projects
 
 ```js
 // eslint.config.js
-import createTSConfig from '@wonse/eslint-ts';
+import jsConfig from '@wonse/eslint-js';
 
-export default createTSConfig();
-```
-
-### React
-
-```js
-// eslint.config.js
-import createReactConfig from '@wonse/eslint-react';
-
-export default createReactConfig();
-```
-
-## Custom Configuration
-
-Each configuration can be customized with options. Here's an example:
-
-```js
-// eslint.config.js
-import createReactConfig from '@wonse/eslint-react';
-
-export default createReactConfig({
-  files: ['src/**/*.tsx'],
-  typescript: {
-    project: './tsconfig.json',
+export default [
+  ...jsConfig,
+  {
+    // Optional: Additional custom rules
+    files: ['src/**/*.{js,mjs,cjs}'],
+    rules: {
+      'no-console': 'warn',
+    },
   },
-  react: {
-    version: 'detect',
-  },
-});
+];
 ```
+
+### TypeScript Projects
+
+```js
+// eslint.config.js
+import tsConfig from '@wonse/eslint-ts';
+
+export default [
+  ...tsConfig,
+  {
+    files: ['src/**/*.{ts,tsx}'],
+    languageOptions: {
+      parserOptions: {
+        project: './tsconfig.json',
+      },
+    },
+    // Optional: Additional custom rules
+    rules: {
+      '@typescript-eslint/no-explicit-any': 'error',
+    },
+  },
+];
+```
+
+### React Projects
+
+```js
+// eslint.config.js
+import reactConfig from '@wonse/eslint-react';
+
+export default [
+  ...reactConfig,
+  {
+    files: ['src/**/*.{tsx,jsx}'],
+    languageOptions: {
+      parserOptions: {
+        project: './tsconfig.json',
+      },
+    },
+    // Optional: Additional custom rules
+    rules: {
+      'react/jsx-no-useless-fragment': ['error', {
+        allowExpressions: true,
+      }],
+      'react-hooks/exhaustive-deps': 'error',
+    },
+  },
+];
+```
+
+## Configuration Options
+
+Each package exports a pre-configured array of ESLint configurations. You can extend these by spreading them into your own configuration array and adding additional rules or overrides.
+
+### Common Rule Categories
+
+| Category | Description |
+|----------|-------------|
+| `js` | Core JavaScript rules and best practices |
+| `import` | Import/export organization and validation |
+| `prettier` | Code formatting rules |
+
+### TypeScript Rules
+
+| Category | Description |
+|----------|-------------|
+| `typescript` | TypeScript-specific rules and type checking |
+| `imports` | TypeScript import organization |
+
+### React Rules
+
+| Category | Description |
+|----------|-------------|
+| `react` | Core React rules and best practices |
+| `hooks` | React Hooks rules |
+| `jsx-a11y` | Accessibility rules |
+| `react-refresh` | Fast Refresh compatibility |
 
 ## Development
 
