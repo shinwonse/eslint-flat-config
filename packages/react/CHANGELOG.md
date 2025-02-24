@@ -1,5 +1,11 @@
 # @wonse/eslint-react
 
+## 4.1.1
+
+### Patch Changes
+
+- c85c001: why dist folder not generated
+
 ## 4.1.0
 
 ### Minor Changes
