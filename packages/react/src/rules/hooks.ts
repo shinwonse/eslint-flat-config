@@ -6,5 +6,5 @@ export const hooksRules: Linter.RulesRecord = {
   'react-hooks/exhaustive-deps': 'warn',
 
   // React Hooks Extra Rules
-  'react-hooks-extra/no-unused-deps': 'warn',
-} as const; 
+  'react-hooks-extra/no-useless-custom-hooks': 'warn',
+} as const;
